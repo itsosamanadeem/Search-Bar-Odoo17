@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+  <t t-name="custom_search_bar_on_pricelist.search_bar" owl="1">
+    <div class="search-container">
+      <input type="text" t-model="state.query" t-on-input="onInputChange" placeholder="Search Product..." class="search-inputCustom"/>
+
+      <div t-if="state.results.length" class="search_dropdown">
+        <ul>
+          <t t-foreach="state.results" t-as="product" t-key="product.id">
+            <li t-on-click="() => selectProduct(product)" class="list" >
+              <t t-esc="product.name"/> - <t t-esc="product.price"/> $
+            </li>
+          </t>
+        </ul>
+      </div>
+    </div>
+  </t>
+</templates>
